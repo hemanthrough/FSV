@@ -1,0 +1,7 @@
+proctype loop(){
+
+}
+
+init{
+loop();
+}

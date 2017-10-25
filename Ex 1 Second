@@ -1,0 +1,10 @@
+proctype loop(){
+ do
+    :: else 
+    :: -> printf("First \n");
+    :: ->printf("second \n")
+}
+
+init{
+loop();
+}
