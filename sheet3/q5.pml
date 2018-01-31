@@ -3,7 +3,7 @@ chan reply = [0] of {int};
 chan worldChannel = [1] of {int};
 
 ///check without reply channel once
-proctype hello(){
+proctype sensor(){
     int client ;
     do
         :: helloChannel? client -> {
@@ -20,25 +20,41 @@ proctype hello(){
 
 }
 
-proctype world(){
+proctype user(){
     int message ;
     do
-       ::worldChannel ? message -> {
-            if
-                :: message ==2 ->{
-                    printf("world\n");
-                    reply !1;
-                }
-                
-            fi
-        }
+        ::worldChannel ? message -> {
+                if
+                    :: message ==2 ->{
+                        printf("world\n");
+                        reply !1;
+                    }
+                    
+                fi
+            }
     od
 }
 
 
 
 
-proctype client(){
+proctype inFlow(){
+int response = 0;
+   do
+            
+            :: atomic{ 
+            helloChannel! 1;
+            reply ? response;
+            worldChannel  !2;
+            reply ? response;
+            
+            }
+    
+    od
+    
+}
+
+proctype outFlow(){
 int response = 0;
    do
             

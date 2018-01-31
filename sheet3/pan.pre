@@ -15,10 +15,9 @@ proctype hello(){
         :: helloChannel? client -> {
             if
                 :: client ==1 ->{
-                    printf("Hello ");
-                    reply! 1;
+                    printf("\nHello");
+                    reply! true;
                     }
-                ::else -> ;
             fi
 
         };
@@ -34,10 +33,9 @@ proctype world(){
             if
                 :: message ==2 ->{
                     printf("world\n");
-
+                    reply !1;
                 }
 
-                ::else -> ;
             fi
         }
     od
@@ -47,18 +45,18 @@ proctype world(){
 
 
 proctype client(){
-    bool response= false;
-    do
-            :: helloChannel! 1;
+int response = 0;
+   do
+
+            :: atomic{
+            helloChannel! 1;
             reply ? response;
             worldChannel !2;
+            reply ? response;
+
+            }
 
     od
-
-
-
-
-
 
 }
 
