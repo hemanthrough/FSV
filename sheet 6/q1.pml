@@ -25,9 +25,9 @@ proctype Assignment3For(){
     printf("%d\n",array[2]);
     printf("product %d\n",product);
     assert(product>0);
-        for(i:1..9){
-            assert(product>=array[i]);
-        }
+    for(i:1..9){
+        assert(product>=array[i]);
+    }
 }
 
 init{
