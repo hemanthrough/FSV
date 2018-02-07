@@ -23,15 +23,17 @@ active proctype n() {
     od
 }
 ltl check{
-        [](count<30);
+       // [](count<30);
+        //[]!(count>=30);
+        !<>(count>=30);
     }
 ltl check2{
-    (count>0)-> ([](count>=0))U(mode>1);
+     [](count>0)-> ([](count>=0))U(mode>1);
     
 }
 
 ltl check3{
-    (count>0) -> (<>(count==0))
+    [](count>0) -> (<>(count==0))
 }
 
 ltl check4{
