@@ -1,7 +1,0 @@
-proctype loop(){
-
-}
-
-init{
-loop();
-}
